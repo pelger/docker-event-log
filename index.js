@@ -59,7 +59,9 @@ module.exports = function dockerEvents(opts) {
   };
 
   events = nes(function(cb) {
-    docker.getEvents(cb);
+    if (docker.getEvents) {
+      docker.getEvents(cb);
+    }
   });
 
   events.pipe(through.obj(function(chunk, enc, cb) {
@@ -67,7 +69,9 @@ module.exports = function dockerEvents(opts) {
     var data = JSON.parse(chunk);
     var container = docker.getContainer(data.id);
     container.inspect(function(err, containerData) {
-      _this.push(toEmit(data, containerData));
+      if (!err) {
+        _this.push(toEmit(data, containerData));
+      }
       cb();
     });
   })).pipe(result, {end: false});
