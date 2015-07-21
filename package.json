@@ -1,6 +1,6 @@
 {
-  "name": "docker-events",
-  "description": "docker events api stream",
+  "name": "docker-event-log",
+  "description": "docker events api log stream",
   "keywords": [
     "docker",
     "events"
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pelger/docker-events.git"
+    "url": "https://github.com/pelger/docker-event-log.git"
   },
   "devDependencies": {}
 }
