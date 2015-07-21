@@ -1,0 +1,25 @@
+{
+  "name": "docker-events",
+  "description": "docker events api stream",
+  "keywords": [
+    "docker",
+    "events"
+  ],
+  "author": "Peter Elger<peter.elger@nearform.com>",
+  "license": "MIT",
+  "version": "0.1.0",
+  "engines": {
+    "node": "*"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "dockerode": "^2.2.2",
+    "never-ending-stream": "^1.1.2",
+    "through2": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pelger/docker-events.git"
+  },
+  "devDependencies": {}
+}
