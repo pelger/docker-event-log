@@ -37,7 +37,7 @@ var toEmit = function toEmit(data, container) {
     type: data.status,
     image: container.Image,
     name: name,
-    from: data.from,
+    host: data.from,
     execute: exec
   };
 };
