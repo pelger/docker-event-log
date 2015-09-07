@@ -36,6 +36,7 @@ var toEmit = function toEmit(data, container) {
     id: container.Id,
     type: data.status,
     image: container.Image,
+    labels: container.Config.Labels,
     name: name,
     host: data.from,
     execute: exec
