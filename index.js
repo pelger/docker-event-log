@@ -66,7 +66,7 @@ module.exports = function dockerEvents(opts) {
 
   events.pipe(through.obj(function(chunk, enc, cb) {
     var _this = this;
-    var data = JSON.parse(chunk);
+    var data = chunk;
     var container = docker.getContainer(data.id);
     container.inspect(function(err, containerData) {
       if (!err) {
