@@ -66,8 +66,17 @@ module.exports = function dockerEvents(opts) {
 
   events.pipe(through.obj(function(chunk, enc, cb) {
     var _this = this;
-    var data = chunk;
-    var container = docker.getContainer(data.id);
+      var data;
+      try {
+          data = JSON.parse(chunk);
+      } catch (e) {
+          // if we start reading the stream of events when some containers are running the first couple of messages
+          // arrive corrupted in an unclear way
+          console.log("Error parsing chunk as JSON: " + chunk.toString('utf8'));
+          cb();
+          return;
+      }
+      var container = docker.getContainer(data.id);
     container.inspect(function(err, containerData) {
       if (!err) {
         _this.push(toEmit(data, containerData));
