@@ -14,7 +14,7 @@
   "main": "index.js",
   "dependencies": {
     "dockerode": "^2.2.2",
-    "never-ending-stream": "^1.1.2",
+    "never-ending-stream": "^2.0.0",
     "through2": "^2.0.0"
   },
   "repository": {
