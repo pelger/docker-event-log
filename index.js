@@ -64,7 +64,20 @@ module.exports = function dockerEvents(opts) {
     }
   });
 
-  events.pipe(through.obj(function(chunk, enc, cb) {
+  var splitEvents = events.pipe(through.obj(function (chunk, enc, cb) {
+    var _this = this;
+    // the initial set of events arrives as one chunk
+    var events = chunk.toString().split('\n');
+    for (var i in events) {
+      var event = events[i];
+      if (event) {
+        _this.push(event);
+      }
+    }
+    cb()
+  }));
+
+  splitEvents.pipe(through.obj(function(chunk, enc, cb) {
     var _this = this;
     var data = JSON.parse(chunk);
     var container = docker.getContainer(data.id);
